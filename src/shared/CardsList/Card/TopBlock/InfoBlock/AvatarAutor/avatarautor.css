@@ -1,0 +1,16 @@
+.imgBack {
+	display: inline-block;
+	background-image: url("./img/avatar1.png");
+	width: 20px;
+	height: 20px;
+	background-size: 100%;
+	margin-right: 7px;
+}
+
+.imgBackNoImg {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-size: 100%;
+	margin-right: 7px;
+}

@@ -1,0 +1,33 @@
+.container {
+  min-width: 103px;
+  height: 40%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.listContainer {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+}
+
+.list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+
+@media all and (min-width: 1024px) {
+  .container {
+    width: 12%;
+    height: 40%;
+  }
+}
+
+

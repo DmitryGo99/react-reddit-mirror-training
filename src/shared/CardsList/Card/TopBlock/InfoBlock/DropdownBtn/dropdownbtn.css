@@ -1,0 +1,39 @@
+.btn {
+	position: absolute;
+	right: 14px;
+	top: 17px;
+	bottom: 2px;
+	width: 31px;
+	height: 31px;
+	border-radius: 50%;
+	transition: all .3s ease-in-out;
+}
+.back {
+	background: rgba(51, 51, 51, 0.1)
+}
+.svg {
+	position: relative;
+	top: -2px;
+}
+
+
+
+@media all and (min-width: 1024px) {
+	.btn {
+		transform: rotate(90deg);
+		top: 33px;
+		right: 90px;
+	}
+}
+
+@media all and (min-width: 1540px) {
+	.btn {
+		transform: rotate(90deg);
+		top: 56px;
+		right: 90px;
+	}
+
+	.btn:hover {
+		background-color: rgba(51, 51, 51, 0.1);
+	}
+}

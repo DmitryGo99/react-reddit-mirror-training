@@ -1,0 +1,59 @@
+.spanBot {
+	margin-right: 4px;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 14px;
+	text-align: center;
+	color: #C4C4C4;
+}
+
+.btnLeftPart:first-child {
+	margin-right: 4px;
+}
+
+.btnRightPart {
+	margin-right: 15px;
+}
+
+.btnMidPart {
+	margin-right: 6px;
+}
+
+@media all and (min-width: 1024px) {
+	.midPart,
+	.rightPart{
+		display: none;
+	}
+
+	.leftPart {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.btnLeftPart:first-child {
+		margin-right: 0;
+	}
+
+	.spanBot {
+		margin-right: 0;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 16px;
+		color: #333333;
+	}
+}
+
+.icoDown path,
+.icoUp path{
+	transition: all .3s ease-in-out;
+}
+
+@media all and (min-width: 1540px) {
+	.icoUp:hover path{
+		fill: #A4CC33;
+	}
+
+	.icoDown:hover path{
+		fill: #CC3361;
+	}
+}
