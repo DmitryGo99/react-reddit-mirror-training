@@ -1,15 +1,24 @@
 import React from 'react';
-import styles from './infoblock.css';
 import {AvatarAutor} from "./AvatarAutor";
 import {NameAuthor} from "./NameAuthor";
 import {DatePublic} from "./DatePublic";
+import styled from 'styled-components'
 
-export function InfoBlock() {
+type Props = {
+  children?: React.ReactNode
+}
+
+const SInfoBlock = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export function InfoBlock(props: Props) {
   return (
-    <div className={styles.infoBlock}>
+    <SInfoBlock {...props}>
       <AvatarAutor/>
       <NameAuthor/>
       <DatePublic/>
-    </div>
+    </SInfoBlock>
   );
 }

@@ -1,17 +1,27 @@
 import React from 'react';
-import styles from './content.css';
+import styled from 'styled-components'
+
 
 interface IcontentProps {
 	children?: React.ReactNode;
 }
 
-export function Content({children}: IcontentProps) {
+const SContent = styled.main`
+overflow: hidden;
+@media ${props => props.theme.media.tablet} {
+	background-color: var(--white);
+    border-radius: 7px 7px 0 0;
+}
+`
+
+
+export function Content(props: IcontentProps) {
 	return (
 		<div>
 
-			<main className={styles.content}>
-				{children}
-			</main>
+			<SContent {...props}>
+				{props.children}
+			</SContent>
 
 		</div>
 	);

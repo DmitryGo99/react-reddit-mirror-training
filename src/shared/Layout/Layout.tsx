@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './layout.css';
 
 interface ILayoutProps {
   children?: React.ReactNode
@@ -7,7 +6,7 @@ interface ILayoutProps {
 
 export function Layout({ children }: ILayoutProps) {
   return (
-      <div className={styles.layout}>{children}</div>
+      <div style={{margin: '0 auto', maxWidth: '1400px'}}>{children}</div>
   );
 }
 

@@ -1,16 +1,33 @@
 import React from 'react';
-import styles from './header.css';
 import {SearchBlock} from "./SearchBlock";
 import {ThreadTitle} from "./ThreadTitle";
 import {SortBlock} from "./SortBlock";
+import styled from 'styled-components'
 
 
-export function Header() {
+type Props = {
+  children?: React.ReactNode
+}
+
+const StyledHeader = styled.header`
+@media ${props => props.theme.media.tablet} {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 40px;
+}
+@media ${props => props.theme.media.desctop} {
+  padding: 67px 0;
+}
+`
+
+
+export function Header(props: Props) {
 	return (
-		<header className={styles.header}>
+		<StyledHeader {...props}>
 			<SearchBlock/>
 			<ThreadTitle />
 			<SortBlock />
-		</header>
+		</StyledHeader>
 	);
 }

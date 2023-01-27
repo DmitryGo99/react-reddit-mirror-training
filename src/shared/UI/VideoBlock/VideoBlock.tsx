@@ -1,17 +1,27 @@
 import React from 'react';
-import styles from './videoblock.css';
 import ReactPlayer from 'react-player'
+import styled from 'styled-components'
+
 
 interface IVideo {
-  props?: string;
+  props?: any;
 }
+
+const SBlock = styled.div`
+  display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-content: center;
+	padding: 10px;
+`
 
 export function VideoBlock(props: IVideo) {
   if (props.props !== '' && props.props) {
     return (
-        <div className={styles.block}>
+        <SBlock {...props}>
           <ReactPlayer controls={true} url={props.props}/>
-        </div>
+        </SBlock>
     );
   } else {
     return (

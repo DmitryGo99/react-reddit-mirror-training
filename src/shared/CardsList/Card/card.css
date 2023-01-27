@@ -3,6 +3,7 @@ button {
   border: 0;
   padding: 0;
   cursor: pointer;
+  /* overflow-y: scroll; */
 }
 
 .card {
@@ -14,7 +15,7 @@ button {
   flex-flow: row wrap;
 }
 .card > *, .textContent > * {
-  flex: 1 1 100%;
+  flex: 0 0 100%;
 }
 .card > * + * {
   padding: 13px 0 0;
@@ -27,7 +28,8 @@ button {
   .card {
     background-color: transparent;
     max-height: 107px;
-    padding: 0 40px;
+    padding: 0;
+    padding-right: 40px;
   }
   .card {
     flex: 0 0;

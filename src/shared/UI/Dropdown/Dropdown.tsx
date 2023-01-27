@@ -1,16 +1,42 @@
 import React, {useRef} from 'react';
-import styles from './dropdown.css';
 import {DropdownBtn} from "../../CardsList/Card/TopBlock/InfoBlock/DropdownBtn";
-import ReactDOM from "react-dom";
-import {CommentPost} from "../../Post/CommentPost";
 import {BlockDropdown} from "../../CardsList/Card/BlockDropdown";
+import styled from 'styled-components'
 
-interface IDropdownProps {
-	button?: React.ReactNode;
-	children?: React.ReactNode;
+
+type Props = {
+  children?: React.ReactNode
 }
 
-export function Dropdown({button, children}: IDropdownProps) {
+const SContainer = styled.div`
+min-width: 103px;
+height: 40%;
+position: absolute;
+right: 0;
+top: 0;
+@media ${props => props.theme.media.tablet}{
+	width: 12%;
+  height: 40%;
+}
+`
+
+const SListCont = styled.div`
+	width: 100%;
+  height: 100%;
+  left: 0;
+  position: absolute;	
+`
+
+const SList = styled.div`
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+z-index: 3;	
+`
+
+export function Dropdown(props: Props) {
 	const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 	const node = document.querySelector('#dropdown_root')
 	if (!node) return null
@@ -38,18 +64,18 @@ export function Dropdown({button, children}: IDropdownProps) {
 	}
 
 	return (
-		<div className={styles.container}>
+		<SContainer {...props}>
 			<div ref={ref} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
 				<DropdownBtn iaAt={isDropdownOpen}/>
 			</div>
 			{isDropdownOpen && (
-				<div className={styles.listContainer}>
-					<div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
+				<SListCont {...props}>
+					<SList {...props} onClick={() => setIsDropdownOpen(false)}>
 						<BlockDropdown positionTop={blockDropdownPositionTop}
 									   positionRight={blockDropdownPositionLeft}/>
-					</div>
-				</div>
+					</SList>
+				</SListCont>
 			)}
-		</div>
+		</SContainer>
 	);
 }

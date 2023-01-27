@@ -1,10 +1,23 @@
 import React from 'react';
-import styles from './btnscrollup.css'
+import styled from 'styled-components'
 
-export function BtnScrollUp() {
+type Props = {
+  children?: React.ReactNode
+}
+
+const SBtn = styled.button`
+	position: absolute;
+	right: -20px;
+	transition: all .3s ease-in-out;
+	&:hover {
+		transform: scale(1.1);
+	}
+`
+
+export function BtnScrollUp(props: Props) {
 
 	return (
-		<button className={styles.btn}>
+		<SBtn {...props}>
 			<svg width="50px" height="50px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 				<title>Iconly/Broken/Arrow - Up Circle</title>
 				<g id="Iconly/Broken/Arrow---Up-Circle" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -13,6 +26,6 @@ export function BtnScrollUp() {
 					</g>
 				</g>
 			</svg>
-		</button>
+		</SBtn>
 	);
 }

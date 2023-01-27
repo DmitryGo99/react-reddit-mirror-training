@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import styles from './post.css';
 import ReactDOM from "react-dom";
 import {cardContext} from "../context/cardContext";
 import {useComment} from "../hooks/useComment"
@@ -11,13 +10,70 @@ import {VideoBlock} from "../UI/VideoBlock";
 import {ImgBlock} from "../UI/ImgBlock";
 import {CommentPostContainer} from "./CommentPostContainer";
 import {useHistory} from "react-router-dom";
+import styled from 'styled-components'
+
 
 interface IPost {
 	title: string;
 	position?: any;
 	onClose?: (b: boolean) => void
 	path?: string
+	children?: React.ReactNode
 }
+
+const SModal = styled.div`
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+z-index: 1000;
+overflow-x: hidden;
+overflow-y: auto;
+background: #FFFFFF;
+box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+border-radius: 7px;
+min-width: 200px;
+min-height: 160px;
+max-width: 80%;
+padding: 24px;
+margin-bottom: 25px;
+`
+const STopBlock = styled.div`
+display: flex;
+margin-bottom: 24px;
+`
+const STitlePost = styled.h2`
+	margin-bottom: 10px;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 23px;
+	color: #333333;
+`
+const SDatePublic = styled.span`
+margin-right: 5px;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #999999;
+`
+const SAuthorIcon = styled.img`
+width: 20px;
+height: 20px;
+`
+const SNameAuthor = styled.span`
+margin-right: 5px;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #CC6633;
+`
+const SContentBlock = styled.p`
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #333333;
+`
+
 
 export function Post(props: IPost) {
 	const comments = useComment()
@@ -51,28 +107,28 @@ export function Post(props: IPost) {
 	return ReactDOM.createPortal((
 		<div>
 			{
-				loadState && <div className={styles.modal} style={{top: props.position.top}} ref={ref}>
-					<div className={styles.topBlock}>
-						<div className={styles.countPosition}>
+				loadState && <SModal {...props} style={{top: props.position.top + 200}} ref={ref}>
+					<STopBlock {...props}>
+						<div style={{marginRight: '24px'}}>
 							<CountUps countUps={objArrFromContext.ups}/>
 						</div>
 						<div>
-							<h2 className={styles.titlePost}>{objArrFromContext.title}</h2>
-							<span className={styles.datePublic}>опубликовано {dateCreate} назад</span>
-							<img className={styles.authorIcon} alt='icon author'
-								 src={objArrFromContext.sr_detail.icon_img}></img>
-							<span className={styles.nameAuthor}>{objArrFromContext.author}</span>
+							<STitlePost {...props}>{objArrFromContext.title}</STitlePost>
+							<SDatePublic {...props}>опубликовано {dateCreate} назад</SDatePublic>
+							<SAuthorIcon {...props} alt='icon author'
+								 src={objArrFromContext.sr_detail.icon_img}></SAuthorIcon>
+							<SNameAuthor {...props}>{objArrFromContext.author}</SNameAuthor>
 						</div>
-					</div>
-					<p className={styles.contentBlock}>
+					</STopBlock>
+					<SContentBlock {...props}>
 						{objArrFromContext.selftext}
-					</p>
+					</SContentBlock>
 					<ImgBlock props={imgGet}></ImgBlock>
 					<VideoBlock props={linkToVideo}></VideoBlock>
 					<a href={`https://www.reddit.com/${objArrFromContext.permalink}`} target='_blank'>ПЕРЕХОД</a>
 					<CommentPostContainer key={objArrFromContext.id}/>
 					<CommentsGet key={generateRandomString()} comment={comments}/>
-				</div>
+				</SModal>
 			}
 		</div>
 

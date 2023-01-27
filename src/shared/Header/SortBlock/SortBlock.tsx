@@ -1,8 +1,25 @@
 import React from 'react';
-import styles from './sortblock.css';
+import styled from 'styled-components'
 
-export function SortBlock() {
+type Props = {
+  children?: React.ReactNode
+}
+
+const SortBlockContainer = styled.div`
+  background-color: var(--white);
+  padding: 11px 20px;
+  border-radius: 7px;
+  margin: 0 0 20px;
+  @media ${props => props.theme.media.tablet} {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+`
+
+export function SortBlock(props: Props) {
   return (
-  <div className={styles.sortBlock}> sorting dropdown </div>
+  <SortBlockContainer {...props}> sorting dropdown </SortBlockContainer>
   );
 }
